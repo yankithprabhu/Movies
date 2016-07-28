@@ -1,0 +1,477 @@
+
+@mixin clearfix {
+    &:after {
+        content: " ";
+        display: block;
+        height: 0;
+        clear: both;
+    }
+}
+
+ html {
+    position: relative;
+ 	min-height: 100%;
+ }
+
+ body {
+     margin: 0 0 120px;
+ }
+
+.poster-header {
+    height: 64px;
+
+    .navbar-default {
+        background-color: #77b3d4;
+
+        .navbar-brand {
+            color: #FFFFFF;
+            font-weight: bold;
+
+            &:hover {
+                color: darken(#FFFFFF, 10%);
+            }
+        }
+
+        .navbar-collapse {
+
+            li > a {
+                &,
+                &:focus {
+                    color: #FFFFFF;
+                }
+
+                &.active {
+                    background: darken(#77B3D4, 20%);
+                }
+            }
+        }
+    }
+}
+
+.poster-footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 120px;
+    width: 100%;
+    padding: 4rem 0;
+    margin-top: 100px;
+    color: #FFFFFF;
+    background-color: #4f5d73;
+    box-shadow: 0 2px 6px darken(#4F5D73, 20%) inset;
+}
+
+.poster-section {
+
+    &:after {
+        content: "";
+        display: block;
+        height: 120px;
+    }
+
+    .jumbotron {
+        margin-top: 10px;
+
+        h2, p {
+            text-align: center;
+        }
+    }
+
+    .loading-message {
+        margin-top: 50px;
+
+        img {
+            display: block;
+            margin: auto;
+        }
+
+        h5 {
+            text-align: center;
+            font-style: italic;
+        }
+    }
+}
+
+.poster-section {
+
+    .movies-list {
+        margin: auto;
+        margin-top: 30px;
+        width: 80%;
+
+        @include clearfix;
+
+        .movie-item {
+            margin: 20px 5px 0 5px;
+            width: 45%;
+            background-color: #fff;
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+
+            &:nth-child(n+3) {
+                margin-top: 80px;
+            }
+
+            .movie-banner {
+                position: relative;
+                height: 280px;
+
+                .movie-backdrop {
+                    overflow: hidden;
+                    height: 100%;
+                    background-color: rgba(0,0,0,0.5);
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        -webkit-filter: blur(2px);
+                                filter: blur(2px);
+                    }
+                }
+
+                .rating,
+                .movie-poster {
+                    position: absolute;
+                }
+
+                .rating {
+                    top: 0;
+                    right: 15px;
+                    height: 60px;
+                    width: 40px;
+                    background: #FBC02D;
+                    text-align: center;
+                    border-radius: 0 0 10px 10px;
+                    border: 2px dashed #F57F17;
+                    border-top-width: 0;
+                    box-shadow: 0 0 7px #FFF9C4;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    .glyphicon,
+                    .rate-value {
+                        display: block;
+                        margin-top: 3px;
+                        color: #FFF;
+                        text-shadow: -1px -1px 0 #F57F17;
+                    }
+
+                    .glyphicon {
+                        font-size: 22px;
+                    }
+
+                    .rate-value {
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+                }
+
+                .movie-poster {
+                    top: 30px;
+                    left: 30px;
+                    width: 150px;
+                    height: 220px;
+                    border: 3px solid #FFFFFF;
+                    transition: box-shadow .2s;
+
+                    &:hover {
+                        box-shadow: 0 0 10px #fff;
+                    }
+                }
+            }
+
+            .movie-meta {
+                padding: 15px;
+
+                hr {
+                    margin: 12px auto 12px auto;
+                }
+
+                .title {
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    .title-text {
+                        display: inline-block;
+                        margin: 0;
+                        transition: color .2s;
+
+                        &:hover {
+                            color: #999;
+                        }
+                    }
+                }
+
+                .release-date {
+
+                    .glyphicon {
+                        margin-right: 5px;
+                    }
+                }
+
+                .overview {
+                    display: -webkit-box;
+                    height: 70px;
+                    overflow: hidden;
+                    font-size: 14px;
+                    text-overflow: ellipsis;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+
+                .card-actions {
+                    @include clearfix;
+
+                    .more-info {
+                        line-height: 20px;
+                    }
+
+                    .more-info {
+                        font-size: 20px;
+                        transition: color .2s;
+                    }
+
+                    .action-button {
+                        float: left;
+                    }
+
+                    .more-info {
+                        float: right;
+                        text-decoration: none;
+                        color: #77b3d4;
+
+                        @include clearfix;
+
+                        &:hover {
+                            color: lighten(#77b3d4, 10%);
+                        }
+
+                        span {
+                            float: left;
+                            margin-top: 1px;
+                            margin-right: 5px;
+                        }
+
+                        em {
+                            float: right;
+                            font-style: normal;
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(odd) {
+                float: left;
+                clear: right;
+            }
+
+            &:nth-child(even) {
+                float: right;
+            }
+        }
+    }
+
+    .movies-list-empty {
+        text-align: center;
+    }
+}
+
+.poster-section {
+
+    .movie-details-section {
+        width: 100%;
+
+        .row {
+            padding: 20px 0 20px 0;
+            background-color: #F7F7F7;
+        }
+    }
+}
+
+.poster-section {
+
+    .movie-details-section {
+
+        .sidebar {
+
+            .movie-poster {
+                position: relative;
+
+                img {
+                    display: block;
+                    margin: auto;
+                }
+
+                .glyphicon {
+                    visibility: hidden;
+                    position: absolute;
+                    width: 50%;
+                    height: 30%;
+                    top: 0; left: 0; bottom: 0; right: 0;
+                    overflow: hidden;
+                    margin: auto;
+                    text-align: center;
+                    font-size: 6em;
+                    color: rgba(38, 50, 56, 0.52);
+                }
+
+                &:hover {
+                    cursor: pointer;
+
+                    .glyphicon {
+                        visibility: visible;
+                    }
+                }
+            }
+
+            .stats-table {
+
+                .rating {
+                    font-size: 13px;
+                }
+            }
+        }
+
+        .contents {
+
+            .movie-title {
+                @include clearfix;
+
+                .title-text,
+                .release-year {
+                    display: inline-block;
+                    float: left;
+                    margin: 0;
+                }
+
+                .release-year {
+                    margin: 18px 0 0 5px;
+                }
+            }
+
+            hr {
+                margin: 20px 0 20px 0;
+            }
+
+            .movie-synopsis {
+
+                h6 {
+                    margin-top: 8px;
+                    margin-bottom: 8px;
+                    font-weight: bold;
+                }
+
+                .movie-genres {
+
+                    .label {
+                        font-size: 14px;
+                        margin-right: 5px;
+                    }
+                }
+
+                .crew-table,
+                .cast-items {
+                    width: 80%;
+                    margin-bottom: 0;
+
+                    a {
+                        color: darken(#77b3d4, 10%);
+                    }
+                }
+
+                .crew-table {
+
+                    th, td {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    th {
+                        width: 20%;
+                    }
+
+                    td {
+                        width: 80%;
+                    }
+                }
+
+                .cast-items {
+
+                    .cast-member:nth-child(n+1) {
+                        margin-bottom: 15px;
+                    }
+                }
+
+                .cast-person {
+                    @include clearfix;
+
+                    .person-photo,
+                    .person-title {
+                        display: inline-block;
+                        float: left;
+                    }
+
+                    .person-title {
+                        margin-top: 10px;
+                        margin-left: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.poster-modal {
+    margin: 5% auto 0 auto;
+    outline: none;
+    background: #FFF;
+    width: 396px;
+
+    .close-modal {
+        position: absolute;
+        right: 0;
+        top: 50px;
+        font-size: 4em;
+        line-height: 60px;
+        cursor: pointer;
+    }
+}
+
+.action-button {
+    cursor: pointer;
+
+    .glyphicon {
+        font-size: 20px;
+        line-height: 20px;
+        color: #999;
+        transition: color .2s;
+
+        &:hover {
+            cursor: pointer;
+            color: #444;
+        }
+    }
+
+    .glyphicon-remove {
+        color: #F44336;
+    }
+
+    .glyphicon-ok {
+        color: #8BC34A;
+    }
+}
+
+@media (max-width:768px) {
+
+    .poster-footer {
+
+        .container > p {
+            float: none !important;
+            text-align: center;
+        }
+    }
+}
